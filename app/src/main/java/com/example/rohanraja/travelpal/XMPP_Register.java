@@ -13,7 +13,7 @@ import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 
-public class XMPPConnector extends AsyncTask<Void, Void, Void>
+public class XMPP_Register extends AsyncTask<String, Void, Void>
 {
     String host = "10.64.82.255";
     String port = "5222";
@@ -23,7 +23,7 @@ public class XMPPConnector extends AsyncTask<Void, Void, Void>
     XMPPConnection connection;
 
     @Override
-    protected Void doInBackground(Void... voids) {
+    protected Void doInBackground(String... strings) {
         login();
         try {
             registerUser();
@@ -59,40 +59,12 @@ public class XMPPConnector extends AsyncTask<Void, Void, Void>
             Presence presence = new Presence(Presence.Type.available);
             connection.sendPacket(presence);
 
-            Message msg = new Message("admin@rohans-macbook-pro.local", Message.Type.chat);
-            msg.setBody("Testing Testing one two three");
-            connection.sendPacket(msg);
-            //  xmppClient.setConnection(connection);
         } catch (Exception ex) {
             Log.e("XMPPClient", "[SettingsDialog] Failed to log in as " + username);
             //  xmppClient.setConnection(null);
         }
 
 
-
-        try
-        {
-            PacketFilter filter = new MessageTypeFilter(Message.Type.chat);
-
-            connection.addPacketListener(new PacketListener()
-            {
-                public void processPacket(Packet packet)
-                {
-                    Message message = (Message) packet;
-                    String body = message.getBody();
-                    String from = message.getFrom();
-
-
-
-                    Log.d("XMPPClientMSG", "[Message] : " + from + ", " + body);
-                }
-            }, filter);
-
-        }
-        catch (Exception e)
-        {
-
-        }
 
     }
 
