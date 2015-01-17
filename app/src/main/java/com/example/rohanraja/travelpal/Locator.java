@@ -42,8 +42,9 @@ import java.util.Random;
 public class Locator extends Activity {
 
     public static String HOST_URL = "10.64.82.255";
-    public static String myUSER_NAME = "rohan1020";
+    public static String myUSER_NAME = "admin";
     public static String myPASSWORD = "ro991993";
+    public static String myLang = "en";
 
     public static DiscussArrayAdapter adapter;
     private ListView lv;
@@ -141,6 +142,7 @@ public class Locator extends Activity {
     }
 
 
+
     public class HTTP_Translator2 extends AsyncTask<String, String, Long> {
 
         protected void onPreExecute()
@@ -173,11 +175,48 @@ public class Locator extends Activity {
             String pText = urlPars[0];
             String pLang = "fr";
 
+            String url_base = "https://translate.yandex.net/api/v1.5/tr.json/detect?key=trnsl.1.1.20150117T201452Z.f05f1043eb2cd4c6.4fcc4e7ae9b3c0538b2a5acb548f65b3ffb44c68&text=" + pText ;
 
-            String url_base = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20150117T201452Z.f05f1043eb2cd4c6.4fcc4e7ae9b3c0538b2a5acb548f65b3ffb44c68&lang="+ pLang +"-en&text=" + pText;
+            try {
 
+                //    URI website = new URI(url_base + "22.3297383,87.2986599" +" &destination=" + "22.3193383,87.2996599");
 
+                //  String get_url = (url_base);
+                String get_url = (url_base);
 
+//            HttpClient Client = new DefaultHttpClient();
+//            HttpGet httpget;
+//            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+//            httpget = new HttpGet(get_url);
+//            String content = Client.execute(httpget, responseHandler);
+
+                URL url = new URL(get_url);
+                URLConnection urlConnection = url.openConnection();
+                InputStream in = urlConnection.getInputStream();
+
+                String content = new String(readFully(in),  "UTF-8");
+
+                Log.d("HTTPCONT", content);
+
+                pLang = new JSONObject(content).getString("lang") ;
+
+//            HttpGet request = new HttpGet();
+//            request.setURI(website);
+//
+//            Log.d("GmapsTime", "Requesting = ");
+//
+//            HttpResponse response = httpclient.execute(request);
+//
+//            String responseStr = EntityUtils.toString(response.getEntity());
+
+                //  Log.d("GmapsTime", "Response = " + content);
+
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                Log.d("GmapsTime", e.toString());
+            }
+
+            url_base = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20150117T201452Z.f05f1043eb2cd4c6.4fcc4e7ae9b3c0538b2a5acb548f65b3ffb44c68&lang="+ pLang +"-" + Locator.myLang + "&text=" + pText;
 
             try {
 
@@ -269,7 +308,7 @@ public class Locator extends Activity {
 
         public void sendMessage(String chatText)
         {
-            Message msg = new Message("admin@rohans-macbook-pro.local", Message.Type.chat);
+            Message msg = new Message("rohan1020@rohans-macbook-pro.local", Message.Type.chat);
             msg.setBody(chatText);
             connection.sendPacket(msg);
         }
