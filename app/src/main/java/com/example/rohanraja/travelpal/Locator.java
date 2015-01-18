@@ -39,11 +39,11 @@ import java.util.Random;
 
 public class Locator extends Activity {
 
-    public static String HOST_URL = "10.64.82.255";
+    public static String HOST_URL = "10.142.114.192";
     public static String myUSER_NAME = "rohan1020";
     public static String myPASSWORD = "ro991993";
     public static String myLang = "en";
-    public static String CHATEE = "admin";
+    public static String CHATEE = "rocky";
 
     public static DiscussArrayAdapter adapter;
     private ListView lv;
@@ -91,7 +91,6 @@ public class Locator extends Activity {
             }
         });
 
-        addItems();
     }
 
     private void addItems() {

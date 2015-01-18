@@ -36,7 +36,7 @@ import java.net.URL;
 
 public class finder extends Activity implements LocationListener {
 
-    public static String server_ip = "10.64.5.37:8080" ;
+    public static String server_ip = "10.137.40.239:8081" ;
     boolean isDone = true ;
 
 
@@ -194,10 +194,11 @@ public class finder extends Activity implements LocationListener {
 
 
                             TextView tv;
+                            ImageView imV;
 
                             tv = (TextView) findViewById(R.id.txt1) ;
                             tv.setText(usersObj.getJSONObject(0).getString("user_name") + ", " + usersObj.getJSONObject(0).getString("rating"));
-                            ImageView imV = (ImageView) findViewById(R.id.im1);
+                            imV = (ImageView) findViewById(R.id.im1);
 //                            imV.setImageBitmap(mIcon_val);
                             imV.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -212,8 +213,58 @@ public class finder extends Activity implements LocationListener {
                                 }
                             });
 
+
                             tv = (TextView) findViewById(R.id.txt2) ;
                             tv.setText(usersObj.getJSONObject(1).getString("user_name") + ", " + usersObj.getJSONObject(1).getString("rating"));
+                            imV = (ImageView) findViewById(R.id.im2);
+//                            imV.setImageBitmap(mIcon_val);
+                            imV.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent intent = new Intent(finder.this, Locator.class);
+                                    try {
+                                        intent.putExtra("CHATEE",usersObj.getJSONObject(1).getString("jabber_id"));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    startActivity(intent);
+                                }
+                            });
+
+                            tv = (TextView) findViewById(R.id.txt3) ;
+                            tv.setText(usersObj.getJSONObject(2).getString("user_name") + ", " + usersObj.getJSONObject(2).getString("rating"));
+                            imV = (ImageView) findViewById(R.id.im3);
+//                            imV.setImageBitmap(mIcon_val);
+                            imV.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent intent = new Intent(finder.this, Locator.class);
+                                    try {
+                                        intent.putExtra("CHATEE",usersObj.getJSONObject(2).getString("jabber_id"));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    startActivity(intent);
+                                }
+                            });
+
+                            tv = (TextView) findViewById(R.id.txt4) ;
+                            tv.setText(usersObj.getJSONObject(3).getString("user_name") + ", " + usersObj.getJSONObject(3).getString("rating"));
+                            imV = (ImageView) findViewById(R.id.im4);
+//                            imV.setImageBitmap(mIcon_val);
+                            imV.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent intent = new Intent(finder.this, Locator.class);
+                                    try {
+                                        intent.putExtra("CHATEE",usersObj.getJSONObject(3).getString("jabber_id"));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    startActivity(intent);
+                                }
+                            });
+
 
 
                         } catch (JSONException e) {

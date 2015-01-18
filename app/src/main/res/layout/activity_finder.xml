@@ -1,9 +1,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:layout_height="match_parent"
+
+    tools:context=".MainActivity"
+
+    >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/bg3"
+        />
 
 
     <!--<ImageView-->
@@ -19,17 +27,20 @@
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:onClick="onClick"
-        android:src="@drawable/person"
+        android:src="@drawable/mainperson"
 
         android:text="Name:Rating" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
     <ImageView
         android:id="@+id/im1"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="15dp"
-        android:onClick="onClick"
         android:src="@drawable/person"
         android:text="Button" />
     <TextView
@@ -38,16 +49,22 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/im1"
         android:layout_alignLeft="@+id/im1"
+        android:text="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:gravity="center"
-        android:textColor="#ffffff"
-        android:text="Count" />
+        android:layout_alignParentRight="true"
+        >
+
     <ImageView
         android:id="@+id/im2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        android:onClick="onClick"
+
         android:src="@drawable/person"
         android:text="Button" />
     <TextView
@@ -57,7 +74,19 @@
         android:layout_alignBottom="@+id/im2"
         android:layout_alignLeft="@+id/im2"
         android:gravity="center"
-        android:text="Count" />
+        android:text="" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        >
 
     <ImageView
         android:id="@+id/im3"
@@ -65,8 +94,6 @@
         android:layout_height="100dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="15dp"
-        android:onClick="onClick"
         android:src="@drawable/person"
         android:text="Button" />
 
@@ -77,16 +104,23 @@
         android:layout_alignBottom="@+id/im3"
         android:layout_alignLeft="@+id/im3"
         android:gravity="center"
-        android:text="Count" />
+        android:text="" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        >
 
     <ImageView
         android:id="@+id/im4"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginLeft="15dp"
         android:layout_alignParentBottom="true"
-        android:onClick="onClick"
         android:src="@drawable/person"
 
         />
@@ -96,7 +130,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/im4"
         android:gravity="center"
-        android:text="Counter" />
+        android:text="" />
+    </LinearLayout>
 
 
 </RelativeLayout>
