@@ -14,8 +14,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.rohanraja.travelpal.ServerComms.HTTP_Translator;
-
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
@@ -42,9 +40,10 @@ import java.util.Random;
 public class Locator extends Activity {
 
     public static String HOST_URL = "10.64.82.255";
-    public static String myUSER_NAME = "admin";
+    public static String myUSER_NAME = "rohan1020";
     public static String myPASSWORD = "ro991993";
     public static String myLang = "en";
+    public static String CHATEE = "admin";
 
     public static DiscussArrayAdapter adapter;
     private ListView lv;
@@ -58,7 +57,7 @@ public class Locator extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discuss);
 
-
+        CHATEE = getIntent().getStringExtra("CHATEE") ;
 
         xmp2 = new XMPP_Listener2();
         xmp2.execute("");
@@ -308,7 +307,7 @@ public class Locator extends Activity {
 
         public void sendMessage(String chatText)
         {
-            Message msg = new Message("rohan1020@rohans-macbook-pro.local", Message.Type.chat);
+            Message msg = new Message(CHATEE + "@rohans-macbook-pro.local", Message.Type.chat);
             msg.setBody(chatText);
             connection.sendPacket(msg);
         }
